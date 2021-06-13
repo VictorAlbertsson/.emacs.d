@@ -1,0 +1,11 @@
+(require 'which-key)
+
+(which-key-mode)
+
+;;; 'which-key' configuration options goes here
+(global-set-key
+ (kbd "<menu>")
+ (lambda ()
+   (pcase major-mode
+     ;; Major mode specific hydras go here
+     (_ (hydra-open hydra-master/body)))))
