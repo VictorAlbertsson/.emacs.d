@@ -21,6 +21,14 @@
      (hydra-push hydra-curr-body-fn) ; hydra-curr-body-fn is a lexically bound variable
      (call-interactively ',hydra)))
 
+(global-set-key
+ (kbd "<menu>")
+ (lambda ()
+   (interactive)
+   (pcase major-mode
+     ;; Major mode specific hydras go here
+     (_ (hydra-open hydra-master/body)))))
+
 ;; Keybinding defined in which-key.el
 (defhydra hydra-master (:color teal)
   "Master"
